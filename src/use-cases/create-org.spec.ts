@@ -1,0 +1,72 @@
+
+import { CreateOrgUseCase } from "./create-org";
+import { compare } from "bcryptjs";
+import { expect, beforeEach, describe, it } from 'vitest'
+import { OrgAlreadyExistsError } from "./error/org-already-exists-error";
+import { InMemoryOrgRepository } from "@/repositories/in-memory/in-memory-org-repository";
+
+let orgRepository: InMemoryOrgRepository
+let sut: CreateOrgUseCase
+
+describe('Create Org Use Case', () => {
+  beforeEach(() => {
+    orgRepository = new InMemoryOrgRepository()
+    sut = new CreateOrgUseCase(orgRepository)
+  })
+
+  it('should hash org password upon creation', async () => {
+    const { org } = await sut.execute({
+      address: 'address',
+      cep: '1234567',
+      email: 'org@gmail.com',
+      name: 'org',
+      password: '123456',
+      whatsapp: '(11)123456789'
+    })
+
+    const isPasswordCorrectlyHashed = await compare(
+      '123456',
+      org.password
+    )
+
+    expect(isPasswordCorrectlyHashed).toBe(true)
+  })
+
+  it('should not be able to create with an email that already exists', async () => {
+    const email = 'org@gmail.com'
+
+    await sut.execute({
+      address: 'address',
+      cep: '1234567',
+      email,
+      name: 'org',
+      password: '123456',
+      whatsapp: '(11)123456789'
+    })
+
+    await expect(() =>
+      sut.execute({
+        address: 'address',
+        cep: '1234567',
+        email,
+        name: 'org',
+        password: '123456',
+        whatsapp: '(11)123456789'
+      }),
+    ).rejects.toBeInstanceOf(OrgAlreadyExistsError)
+
+  })
+
+  it('should be able to create org', async () => {
+    const { org } = await sut.execute({
+      address: 'address',
+      cep: '1234567',
+      email: 'org@gmail.com',
+      name: 'org',
+      password: '123456',
+      whatsapp: '(11)123456789'
+    })
+
+    expect(org.id).toEqual(expect.any(String))
+  })
+})
