@@ -1,7 +1,7 @@
 ## REQUISITOS FUNCIONAIS
 
-- [ ] Deve ser possível cadastrar um pet
-- [ ] Deve ser possível remover um pet
+- [x] Deve ser possível cadastrar um pet
+- [x] Deve ser possível remover um pet
 - [ ] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade (Florianópolis)
 - [ ] Deve ser possível filtrar pets por suas características
 - [ ] Deve ser possível visualizar detalhes de um pet para adoção
@@ -11,11 +11,16 @@
 
 ## REGRAS DE NEGÓCIO
 
-- [ ] O pet deve ter as seguintes informações: Nome, Sobre, Idade, Porte, Nível de energia, Ambiente, Fotos e Requisitos para adoção
-- [ ] A ORG deve ter as seguintes informações: Nome, Email, CEP, Endereço, WhatsApp e Senha
-- [ ] O Email da ORG deve ser único
+- [x] O pet deve ter as seguintes informações: Nome, Sobre, Idade, Porte, Nível de energia, Ambiente, Fotos e Requisitos para adoção
+- [x] A ORG deve ter as seguintes informações: Nome, Email, CEP, Endereço, WhatsApp e Senha
+- [x] O Email da ORG deve ser único
 - [ ] Para listar os pets, obrigatoriamente precisamos informar a cidade
-- [ ] Um pet deve estar ligado a uma ORG
+- [x] Um pet deve estar ligado a uma ORG
 - [ ] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp
 - [ ] Todos os filtros, além da cidade, são opcionais
 - [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
+
+#####Reminder
+- O cep será buscado no frontend
+- Se o cep ja existe referencia-lo se não criar
+- O cadastro da org será um stepper perguntando primeiro o endereço (frontend)

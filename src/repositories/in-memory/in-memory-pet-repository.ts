@@ -1,9 +1,12 @@
 import { Pet } from "@prisma/client";
 import { randomUUID } from "node:crypto";
 import { PetCreateInput, PetRepository } from "../pet-repository";
+import { InMemoryOrgRepository } from "./in-memory-org-repository";
+
 
 export class InMemoryPetRepository implements PetRepository {
-  private pets: Pet[] = []
+  public pets: Pet[] = []
+  private orgRepository: InMemoryOrgRepository = new InMemoryOrgRepository()
 
   async create(data: PetCreateInput) {
     const pet = {
@@ -21,4 +24,32 @@ export class InMemoryPetRepository implements PetRepository {
     this.pets.push(pet);
     return pet
   }
+
+  async findById(id: string) {
+    const pet = this.pets.find((item) => item.id === id)
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
+
+  async deleteById(id: string) {
+    const pets = this.pets.filter((item) => item.id !== id)
+    this.pets = pets
+    return
+  }
+
+  // async findAllInCity(address: string) {
+  // const orgs = this.orgRepository.orgs.filter((item) =>
+  //   item.address.toUpperCase().includes(address.toLocaleUpperCase())
+  // )
+  // console.log({ orgs })
+  // const pets = this.pets.filter((item) =>
+  //   orgs.find((org) => org.id === item.org_id)
+  // )
+
+  // return pets
+  // }
 }

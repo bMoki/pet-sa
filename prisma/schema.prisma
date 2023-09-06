@@ -75,15 +75,34 @@ enum Energy {
 }
 
 model Org {
-  id       String @id @default(uuid())
-  name     String
-  email    String
-  cep      String
-  address  String
-  whatsapp String
-  password String
-
-  pets Pet[]
+  id         String  @id @default(uuid())
+  name       String
+  email      String
+  whatsapp   String
+  password   String
+  pets       Pet[]
+  address    Address @relation(fields: [address_id], references: [id])
+  address_id String  @unique
 
   @@map("orgs")
+}
+
+model Address {
+  id          String  @id @default(uuid())
+  location_id String
+  numero      String
+  complemento String?
+  org         Org?
+
+  location Location @relation(fields: [location_id], references: [id])
+}
+
+model Location {
+  id         String    @id @default(uuid())
+  cep        String    @unique
+  logradouro String
+  bairro     String
+  localidade String
+  uf         String
+  Address    Address[]
 }

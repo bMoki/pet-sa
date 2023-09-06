@@ -15,4 +15,7 @@ export interface PetCreateInput {
 
 export interface PetRepository {
   create(data: PetCreateInput): Promise<Pet>
+  findById(id: string): Promise<Pet | null>
+  deleteById(id: string): Promise<void>
+  //findAllInCity(address: string): Promise<Pet[]>
 }

@@ -2,14 +2,15 @@ import { OrgRepository } from "@/repositories/org-repository"
 import { Org } from "@prisma/client"
 import { OrgAlreadyExistsError } from "./error/org-already-exists-error"
 import { hash } from "bcryptjs"
+import { AddressRepository } from "@/repositories/address-repository"
+import { ResourceNotFound } from "./error/resource-not-found"
 
 interface CreateOrgUseCaseRequest {
   name: string
   email: string
-  cep: string
-  address: string
   whatsapp: string
   password: string
+  address_id: string
 }
 
 interface CreateOrgUseCaseResponse {
@@ -17,12 +18,14 @@ interface CreateOrgUseCaseResponse {
 }
 
 export class CreateOrgUseCase {
-  constructor(private orgRepository: OrgRepository) { }
+  constructor(
+    private orgRepository: OrgRepository,
+    private addressRepository: AddressRepository
+  ) { }
 
   async execute({
     name,
-    address,
-    cep,
+    address_id,
     email,
     password,
     whatsapp
@@ -35,10 +38,15 @@ export class CreateOrgUseCase {
       throw new OrgAlreadyExistsError()
     }
 
+    const addressExists = await this.addressRepository.findById(address_id)
+
+    if (!addressExists) {
+      throw new ResourceNotFound()
+    }
+
     const org = await this.orgRepository.create({
       name,
-      address,
-      cep,
+      address_id,
       email,
       password: password_hash,
       whatsapp

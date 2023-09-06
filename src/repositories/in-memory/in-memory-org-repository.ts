@@ -1,18 +1,16 @@
 import { Org, Prisma } from "@prisma/client";
 import { OrgRepository } from "../org-repository";
 import { randomUUID } from "node:crypto";
-import { ResourceNotFound } from "@/use-cases/error/resource-not-found";
 
 export class InMemoryOrgRepository implements OrgRepository {
-  private orgs: Org[] = []
+  public orgs: Org[] = []
 
-  async create(data: Prisma.OrgCreateInput) {
+  async create(data: Prisma.OrgUncheckedCreateInput) {
     const org = {
       id: randomUUID(),
       name: data.name,
       email: data.email,
-      address: data.address,
-      cep: data.cep,
+      address_id: data.address_id,
       whatsapp: data.whatsapp,
       password: data.password,
       pets: data.pets
