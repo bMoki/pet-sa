@@ -36,6 +36,7 @@ describe('Delete Pet Use Case', () => {
         org_id: '1',
         photos: [],
         requirements: [],
+        independence_level: 'LOW',
       }
     )
 
@@ -50,6 +51,7 @@ describe('Delete Pet Use Case', () => {
         org_id: '1',
         photos: [],
         requirements: [],
+        independence_level: 'LOW',
       }
     )
 

@@ -1,6 +1,6 @@
 import { OrgRepository } from "@/repositories/org-repository"
 import { PetRepository } from "@/repositories/pet-repository"
-import { Energy, Environment, Pet, Size, Stage } from "@prisma/client"
+import { Energy, Environment, IndependenceLevel, Pet, Size, Stage } from "@prisma/client"
 import { ResourceNotFound } from "./error/resource-not-found"
 
 
@@ -12,6 +12,7 @@ interface CreatePetUseCaseRequest {
   energy_level: Energy,
   size: Size,
   environment: Environment,
+  independence_level: IndependenceLevel,
   photos: string[]
   requirements: string[]
 }
@@ -35,7 +36,8 @@ export class CreatePetUseCase {
     photos,
     requirements,
     size,
-    stage
+    stage,
+    independence_level
   }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse> {
 
     const org = await this.orgRepository.findById(org_id)
@@ -53,7 +55,8 @@ export class CreatePetUseCase {
       photos,
       requirements,
       size,
-      stage
+      stage,
+      independence_level
     })
 
     return { pet }

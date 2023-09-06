@@ -25,7 +25,7 @@ describe('Create Address Use Case', () => {
       numero: '1',
       uf: 'SC',
     })
-
+    expect(locationRepository.locations).toHaveLength(1)
     expect(address.id).toEqual(expect.any(String))
   })
 

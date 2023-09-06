@@ -25,6 +25,7 @@ describe('Create Pet Use Case', () => {
         environment: 'MEDIUM',
         size: 'BIG',
         stage: 'PUPPY',
+        independence_level: 'LOW',
         name: 'Rex',
         org_id: '1',
         photos: [],
@@ -37,8 +38,7 @@ describe('Create Pet Use Case', () => {
   it('should be able to create pet', async () => {
     const org = await orgRepository.create(
       {
-        address: 'address',
-        cep: '1234567',
+        address_id: 'address_id',
         email: 'org@gmail.com',
         name: 'org',
         password: '123456',
@@ -56,6 +56,7 @@ describe('Create Pet Use Case', () => {
       org_id: org.id,
       photos: [],
       requirements: [],
+      independence_level: 'LOW',
     })
 
     expect(pet.id).toEqual(expect.any(String))

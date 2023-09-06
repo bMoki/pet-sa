@@ -11,7 +11,8 @@
 
 ## REGRAS DE NEGÓCIO
 
-- [x] O pet deve ter as seguintes informações: Nome, Sobre, Idade, Porte, Nível de energia, Ambiente, Fotos e Requisitos para adoção
+- [x] O pet deve ter as seguintes informações: 
+Nome, Sobre, Idade, Porte, Nível de energia, Ambiente,Nível de independência Fotos e Requisitos para adoção
 - [x] A ORG deve ter as seguintes informações: Nome, Email, CEP, Endereço, WhatsApp e Senha
 - [x] O Email da ORG deve ser único
 - [ ] Para listar os pets, obrigatoriamente precisamos informar a cidade

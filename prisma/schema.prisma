@@ -8,14 +8,15 @@ datasource db {
 }
 
 model Pet {
-  id           String      @id @default(uuid())
-  name         String
-  about        String
-  stage        Stage
-  energy_level Energy
-  size         Size
-  environment  Environment
-  org_id       String
+  id                 String            @id @default(uuid())
+  name               String
+  about              String
+  stage              Stage
+  energy_level       Energy
+  size               Size
+  environment        Environment
+  independence_level IndependenceLevel
+  org_id             String
 
   photos       Photo[]
   requirements Requirement[]
@@ -43,6 +44,12 @@ model Requirement {
   Pet Pet @relation(fields: [pet_id], references: [id])
 
   @@map("requirements")
+}
+
+enum IndependenceLevel {
+  LOW
+  AVARAGE
+  HIGH
 }
 
 enum Environment {
