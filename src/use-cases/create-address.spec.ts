@@ -1,5 +1,5 @@
-import { InMemoryAddressRepository } from '@/repositories/in-memory/in-memory-address-repository'
-import { InMemoryLocationRepository } from '@/repositories/in-memory/in-memory-location-repository'
+import { InMemoryAddressRepository } from 'src/repositories/in-memory/in-memory-address-repository'
+import { InMemoryLocationRepository } from 'src/repositories/in-memory/in-memory-location-repository'
 import { expect, beforeEach, describe, it } from 'vitest'
 import { CreateAddressUseCase } from './create-address'
 
@@ -24,6 +24,7 @@ describe('Create Address Use Case', () => {
       logradouro: 'Rua',
       numero: '1',
       uf: 'SC',
+      complemento: null,
     })
     expect(locationRepository.locations).toHaveLength(1)
     expect(address.id).toEqual(expect.any(String))

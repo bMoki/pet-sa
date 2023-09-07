@@ -1,4 +1,4 @@
-import { PetRepository } from "@/repositories/pet-repository"
+import { PetRepository } from "src/repositories/pet-repository"
 import { Pet } from "@prisma/client"
 import { ResourceNotFound } from "./error/resource-not-found"
 

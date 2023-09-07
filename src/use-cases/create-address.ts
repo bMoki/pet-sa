@@ -1,5 +1,5 @@
-import { AddressRepository } from "@/repositories/address-repository"
-import { LocationRepository } from "@/repositories/location-repository"
+import { AddressRepository } from "src/repositories/address-repository"
+import { LocationRepository } from "src/repositories/location-repository"
 import { Address } from "@prisma/client"
 
 interface CreateAddressUseCaseRequest {
@@ -9,7 +9,7 @@ interface CreateAddressUseCaseRequest {
   localidade: string
   uf: string
   numero: string
-  complemento?: string
+  complemento: string | null
 }
 
 interface CreateAddressUseCaseResponse {

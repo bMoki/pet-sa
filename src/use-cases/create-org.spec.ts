@@ -3,8 +3,8 @@ import { CreateOrgUseCase } from "./create-org";
 import { compare } from "bcryptjs";
 import { expect, beforeEach, describe, it } from 'vitest'
 import { OrgAlreadyExistsError } from "./error/org-already-exists-error";
-import { InMemoryOrgRepository } from "@/repositories/in-memory/in-memory-org-repository";
-import { InMemoryAddressRepository } from "@/repositories/in-memory/in-memory-address-repository";
+import { InMemoryOrgRepository } from "src/repositories/in-memory/in-memory-org-repository";
+import { InMemoryAddressRepository } from "src/repositories/in-memory/in-memory-address-repository";
 import { ResourceNotFound } from "./error/resource-not-found";
 
 let orgRepository: InMemoryOrgRepository

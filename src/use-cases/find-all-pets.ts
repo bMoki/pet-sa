@@ -1,4 +1,4 @@
-import { PetRepository } from "@/repositories/pet-repository";
+import { PetRepository } from "src/repositories/pet-repository";
 import { Energy, IndependenceLevel, Pet, Size, Stage } from "@prisma/client";
 
 interface FindAllPetsUseCaseRequest {

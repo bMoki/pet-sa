@@ -1,8 +1,8 @@
-import { OrgRepository } from "@/repositories/org-repository"
+import { OrgRepository } from "src/repositories/org-repository"
 import { Org } from "@prisma/client"
 import { OrgAlreadyExistsError } from "./error/org-already-exists-error"
 import { hash } from "bcryptjs"
-import { AddressRepository } from "@/repositories/address-repository"
+import { AddressRepository } from "src/repositories/address-repository"
 import { ResourceNotFound } from "./error/resource-not-found"
 
 interface CreateOrgUseCaseRequest {

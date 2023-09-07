@@ -1,10 +1,10 @@
 
 import { expect, beforeEach, describe, it } from 'vitest'
-import { InMemoryPetRepository } from "@/repositories/in-memory/in-memory-pet-repository";
-import { InMemoryOrgRepository } from '@/repositories/in-memory/in-memory-org-repository';
+import { InMemoryPetRepository } from "src/repositories/in-memory/in-memory-pet-repository";
+import { InMemoryOrgRepository } from 'src/repositories/in-memory/in-memory-org-repository';
 import { CreateAddressUseCase } from './create-address';
-import { InMemoryAddressRepository } from '@/repositories/in-memory/in-memory-address-repository';
-import { InMemoryLocationRepository } from '@/repositories/in-memory/in-memory-location-repository';
+import { InMemoryAddressRepository } from 'src/repositories/in-memory/in-memory-address-repository';
+import { InMemoryLocationRepository } from 'src/repositories/in-memory/in-memory-location-repository';
 import { FindAllPetsUseCase } from './find-all-pets';
 
 let petRepository: InMemoryPetRepository

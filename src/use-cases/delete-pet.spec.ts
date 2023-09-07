@@ -1,6 +1,6 @@
 
 import { expect, beforeEach, describe, it } from 'vitest'
-import { InMemoryPetRepository } from "@/repositories/in-memory/in-memory-pet-repository";
+import { InMemoryPetRepository } from "src/repositories/in-memory/in-memory-pet-repository";
 import { ResourceNotFound } from './error/resource-not-found';
 import { DeletePetUseCase } from './delete-pet';
 
