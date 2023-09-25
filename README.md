@@ -21,7 +21,7 @@ Nome, Sobre, Idade, Porte, Nível de energia, Ambiente,Nível de independência 
 - [x] Todos os filtros, além da cidade, são opcionais
 - [ ] Para uma ORG acessar a aplicação como admin, ela precisa estar logada
 
-#####Reminder
+##### Reminder
 - O cep será buscado no frontend
 - Se o cep ja existe referencia-lo se não criar
 - O cadastro da org será um stepper perguntando primeiro o endereço (frontend)
